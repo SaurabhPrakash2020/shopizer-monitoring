@@ -34,9 +34,6 @@ pipeline {
             agent {
                 label 'OPENJDK-11-JDK'
             }
-            triggers {
-                pollSCM('0 17 * * *')
-            }
             steps {
                 git branch: 'release', url: 'https://github.com/longflewtinku/shopizer.git'
             }
@@ -52,5 +49,8 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+    }
+    triggers {
+        pollSCM('0 17 * * *')
     }
 }
